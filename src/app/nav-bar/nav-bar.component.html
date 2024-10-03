@@ -1,10 +1,10 @@
 <!-- Hero -->
-<app-icons style="align-items: right; float: right;"></app-icons>
-<section class="et-hero-tabs">
+<!-- <app-icons style="align-items: right; float: right;"></app-icons> -->
+<section  class="et-slide">
   
   <h1>PLAYGROUND</h1>
   <h3>Hi, I'm Patrick and this is My place to play around with technology</h3>
-  <nav class="et-hero-tabs-container">
+  <nav [class]="navClass">
     <a class="et-hero-tab" href="#tab-es6">ES6</a>
     <a class="et-hero-tab" href="#tab-flexbox">Flexbox</a>
     <a class="et-hero-tab" href="#tab-react">React</a>
@@ -19,7 +19,7 @@
   <section *ngFor="let item of contexts" class="et-slide" id="item.componentName">
     <app-content></app-content>
     <h1>{{item.name}}</h1>
-    <h3>something about es6</h3>
+    <h3>{{item.elementRef}}</h3>
   </section>
   <section class="et-slide" id="tab-flexbox"
     appVisible (isVisible)="onVisibilityChange('Component 1', $event)">
@@ -27,7 +27,8 @@
     <h1>Flexbox</h1>
     <h3>something about flexbox</h3>
   </section>
-  <section class="et-slide" id="tab-react">
+  <!-- <section class="et-slide" id="tab-react" appVisible (isVisible)="onVisibilityChange('Component 1', $event)"> -->
+    <section class="et-slide" id="tab-react">
     <app-content></app-content>
     <h1>React</h1>
     <h3>something about react</h3>
