@@ -3,17 +3,17 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "ng serve",
+      "name": "yarn serve",
       "type": "chrome",
       "request": "launch",
-      "preLaunchTask": "npm: start",
+      "preLaunchTask": "yarn: start",
       "url": "http://localhost:4200/"
     },
     {
-      "name": "ng test",
+      "name": "yarn test",
       "type": "chrome",
       "request": "launch",
-      "preLaunchTask": "npm: test",
+      "preLaunchTask": "yarn: test",
       "url": "http://localhost:9876/debug.html"
     }
   ]

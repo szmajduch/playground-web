@@ -1,46 +1,37 @@
 <!-- Hero -->
 <!-- <app-icons style="align-items: right; float: right;"></app-icons> -->
-<section  class="et-slide">
-  
+<section
+  class="et-slide"
+  appVisible
+  [threshold]="0.09"
+  (isVisible)="onVisibilityChangeToTrue($event)"
+>
+  <app-icons></app-icons>
   <h1>PLAYGROUND</h1>
   <h3>Hi, I'm Patrick and this is My place to play around with technology</h3>
-  <nav [class]="navClass">
-    <a class="et-hero-tab" href="#tab-es6">ES6</a>
-    <a class="et-hero-tab" href="#tab-flexbox">Flexbox</a>
-    <a class="et-hero-tab" href="#tab-react">React</a>
-    <a class="et-hero-tab" href="#tab-angular">Angular</a>
-    <a class="et-hero-tab" href="#tab-other">Other</a>
-    <span class="et-hero-tab-slider"></span>
+  <nav [class]="navClass" #nat>
+    <a
+      *ngFor="let tab of contexts"
+      class="et-hero-tab"
+      [href]="'#' + tab.componentName"
+      >{{ tab.name }}</a
+    >
+    <span class="et-hero-tab-slider" [style]="spanClass"></span>
   </nav>
 </section>
 
 <!-- Main -->
 <main class="et-main">
-  <section *ngFor="let item of contexts" class="et-slide" id="item.componentName">
+  <section
+    *ngFor="let item of contexts"
+    class="et-slide"
+    [id]="item.componentName"
+    appVisible
+    [threshold]="0.91"
+    (isVisible)="onVisibilityChange(item.index, $event)"
+  >
     <app-content></app-content>
-    <h1>{{item.name}}</h1>
-    <h3>{{item.elementRef}}</h3>
-  </section>
-  <section class="et-slide" id="tab-flexbox"
-    appVisible (isVisible)="onVisibilityChange('Component 1', $event)">
-    <app-content #1></app-content>
-    <h1>Flexbox</h1>
-    <h3>something about flexbox</h3>
-  </section>
-  <!-- <section class="et-slide" id="tab-react" appVisible (isVisible)="onVisibilityChange('Component 1', $event)"> -->
-    <section class="et-slide" id="tab-react">
-    <app-content></app-content>
-    <h1>React</h1>
-    <h3>something about react</h3>
-  </section>
-  <section class="et-slide" id="tab-angular">
-    <app-content></app-content>
-    <h1>Angular</h1>
-    <h3>something about angular</h3>
-  </section>
-  <section class="et-slide" id="tab-other">
-    <app-content></app-content>
-    <h1>Other</h1>
-    <h3>something about other</h3>
+    <h1>{{ item.name }}</h1>
+    <h3>{{ item.description }}</h3>
   </section>
 </main>

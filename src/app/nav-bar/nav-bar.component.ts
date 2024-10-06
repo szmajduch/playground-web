@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 // import { IsVisible } from '../is-visible.directive';
 import { IconsComponent } from '../icons/icons.component';
 import { ContentComponent } from '../content/content.component';
@@ -13,41 +13,90 @@ import { NgFor, NgClass } from '@angular/common';
   styleUrl: './nav-bar.component.less',
 })
 export class NavBarComponent {
+  @ViewChild('nat') navBar!: ElementRef;
+
+  ngDoCheck(): void {
+    console.log('Change detected!');
+  }
+
   contexts: INavigationContext[] = [
     {
+      index: 0,
       name: 'WeatherApp',
-      componnentName: 'weatherComponent',
+      componentName: 'weatherComponent',
+      description: 'Test description of weatherApp',
       elementRef: undefined,
     },
     {
+      index: 1,
       name: 'PodcastApp',
-      componnentName: 'podcastComponent',
+      componentName: 'podcastComponent',
+      description: 'Test description of podcast app',
       elementRef: undefined,
     },
     {
+      index: 2,
       name: 'Password Manager',
-      componnentName: 'passwordManagerComponent',
+      componentName: 'passwordManagerComponent',
       elementRef: undefined,
     },
     {
+      index: 3,
       name: 'Mock website',
-      componnentName: 'mockComponent',
+      componentName: 'mockComponent',
       elementRef: undefined,
-    }
+    },
   ];
-  baseClass="et-hero-tabs-container";
 
-  navClass=this.baseClass;
-  ngAfterViewInit() {}
- 
-  onVisibilityChange(componentName: string, isVisible: boolean) {
-    console.log(`${componentName} is visible. ${this.navClass}`);
+  baseClass = 'et-hero-tabs-container';
+  spanClass: { [key: string]: string } = {
+    'background-color': 'lightblue',
+    width: '0px',
+  };
+
+  navClass = this.baseClass;
+  navItemWidth: number = 0;
+  index: number = 2;
+  //componentName: HTMLElement
+  onVisibilityChange(componentIndex: number, isVisible: boolean) {
     if (isVisible) {
-      this.navClass=this.baseClass+"--top";
-      console.log(`${componentName} is visible. ${this.navClass}`);
+      this.index = componentIndex;
+      // Access the element's width after the view is initialized
+      this.updateSpanWidth();
+      console.log('index:', this.index);
+    }
+  }
+
+  onVisibilityChangeToTrue(isVisible: boolean) {
+    if (isVisible) {
+      this.navClass = `${this.baseClass}`;
+      this.spanClass = {
+        ...this.spanClass,
+        width: `0px`,
+      };
+      console.log('span', this.spanClass);
     } else {
-      this.navClass=this.baseClass;
-      console.log(`${componentName} is not visible. ${this.navClass}` );
+      this.navClass = `${this.baseClass}--top`;
+      this.navItemWidth = 0;
+    }
+  }
+
+  // Listen for window resize events to update the width dynamically
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.updateSpanWidth();
+  }
+  updateSpanWidth() {
+    if (this.navBar) {
+      this.navItemWidth = this.navBar.nativeElement.offsetWidth / 4;
+      // this.spanClass['width']=this.navItemWidth.toString()+'px';
+      let postion = this.navItemWidth * this.index;
+      console.log('postion', postion);
+      this.spanClass = {
+        width: `${this.navItemWidth}px`,
+        left: `${postion}px`,
+      };
+      // this.changeDetectorRefs.detectChanges();
     }
   }
 }
