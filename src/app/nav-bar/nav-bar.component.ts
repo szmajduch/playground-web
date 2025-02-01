@@ -14,11 +14,6 @@ import { NgFor, NgClass } from '@angular/common';
 })
 export class NavBarComponent {
   @ViewChild('nat') navBar!: ElementRef;
-
-  ngDoCheck(): void {
-    console.log('Change detected!');
-  }
-
   contexts: INavigationContext[] = [
     {
       index: 0,
@@ -56,7 +51,7 @@ export class NavBarComponent {
 
   navClass = this.baseClass;
   navItemWidth: number = 0;
-  index: number = 2;
+  index: number = 0;
   //componentName: HTMLElement
   onVisibilityChange(componentIndex: number, isVisible: boolean) {
     if (isVisible) {
