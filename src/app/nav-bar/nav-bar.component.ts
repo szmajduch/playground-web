@@ -5,41 +5,46 @@ import { ContentComponent } from '../content/content.component';
 import { VisibleDirective } from '../visible-directive.directive';
 import { INavigationContext } from './navigation-bar-utils';
 import { NgFor, NgClass } from '@angular/common';
+import { AboutComponent } from '../about/about.component';
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [IconsComponent, ContentComponent, VisibleDirective, NgFor, NgClass],
+  imports: [
+    IconsComponent,
+    ContentComponent,
+    VisibleDirective,
+    NgFor,
+    NgClass,
+    AboutComponent,
+  ],
   templateUrl: './nav-bar.component.html',
-  styleUrl: './nav-bar.component.less',
+  styleUrl: './nav-bar.component.scss',
 })
 export class NavBarComponent {
   @ViewChild('nat') navBar!: ElementRef;
   contexts: INavigationContext[] = [
     {
       index: 0,
-      name: 'WeatherApp',
+      name: 'Weather App',
       componentName: 'weatherComponent',
-      description: 'Test description of weatherApp',
-      elementRef: undefined,
+      description:
+        'A simple application to check the current weather and forecast.',
     },
     {
       index: 1,
-      name: 'PodcastApp',
-      componentName: 'podcastComponent',
+      name: 'Crypto Invest',
+      componentName: 'cryptoComponent',
       description: 'Test description of podcast app',
-      elementRef: undefined,
     },
     {
       index: 2,
-      name: 'Password Manager',
-      componentName: 'passwordManagerComponent',
-      elementRef: undefined,
+      name: 'CI/CD solutions',
+      componentName: 'CICDComponent',
     },
     {
       index: 3,
-      name: 'Mock website',
+      name: 'Mock websites',
       componentName: 'mockComponent',
-      elementRef: undefined,
     },
   ];
 

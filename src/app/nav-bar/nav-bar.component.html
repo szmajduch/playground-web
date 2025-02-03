@@ -5,23 +5,27 @@
   appVisible
   [threshold]="0.09"
   (isVisible)="onVisibilityChangeToTrue($event)"
+  style="height: 100%"
 >
   <app-icons></app-icons>
   <h1>PLAYGROUND</h1>
-  <h3>Hi, I'm Patrick and this is My place to play around with technology</h3>
   <br />
+  <h3>Hi, I'm Patrick and this is My place to play around with technology.</h3>
   <br />
-  <nav [class]="navClass" #nat>
-    <a
-      *ngFor="let tab of contexts"
-      class="et-hero-tab"
-      [href]="'#' + tab.componentName"
-      >{{ tab.name }}</a
-    >
-    <span class="et-hero-tab-slider" [style]="spanClass"></span>
-  </nav>
+  <div class="lower-section">
+    Here are a few projects I've started, along with a space to share my
+    learning journey.
+  </div>
 </section>
-
+<nav [class]="navClass" #nat>
+  <a
+    *ngFor="let tab of contexts"
+    class="et-hero-tab"
+    [href]="'#' + tab.componentName"
+    >{{ tab.name }}</a
+  >
+  <span class="et-hero-tab-slider" [style]="spanClass"></span>
+</nav>
 <!-- Main -->
 <main class="et-main">
   <section
@@ -32,8 +36,6 @@
     [threshold]="0.91"
     (isVisible)="onVisibilityChange(item.index, $event)"
   >
-    <app-content></app-content>
-    <h1>{{ item.name }}</h1>
-    <h3>{{ item.description }}</h3>
+    <app-content [context]="item"></app-content>
   </section>
 </main>
