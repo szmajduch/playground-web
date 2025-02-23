@@ -80,7 +80,6 @@ export class NavBarComponent {
       this.index = componentIndex;
       // Access the element's width after the view is initialized
       this.updateSpanWidth();
-      console.log('index:', this.index);
     }
   }
 
@@ -91,7 +90,6 @@ export class NavBarComponent {
         ...this.spanClass,
         width: `0px`,
       };
-      console.log('span', this.spanClass);
     } else {
       this.navClass = `${this.baseClass}--top`;
       this.navItemWidth = 0;
@@ -108,7 +106,6 @@ export class NavBarComponent {
       this.navItemWidth = this.navBar.nativeElement.offsetWidth / 5;
       // this.spanClass['width']=this.navItemWidth.toString()+'px';
       let postion = this.navItemWidth * this.index;
-      console.log('postion', postion);
       this.spanClass = {
         width: `${this.navItemWidth}px`,
         left: `${postion}px`,
