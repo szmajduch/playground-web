@@ -10,18 +10,6 @@ li {
   text-decoration: none;
 }
 
-.lower-section {
-    position: absolute;
-    bottom: 20%; // Adjust as needed
-    width: 100%;
-    text-align: center; // Keeps text centered
-    h3 {
-      font-size: 2rem;
-      letter-spacing: 0.3rem;
-      opacity: 0.6;
-    }
-}
-
 .et-hero-tabs,
 .et-slide {
   display: flex;
@@ -32,7 +20,7 @@ li {
   position: relative;
   background: #eee;
   text-align: center;
-  padding: 0 2em;
+  padding: 2em 2em;
 
   h1 {
     font-size: 2rem;
@@ -41,14 +29,19 @@ li {
   }
 
   h3 {
-    font-size: 1.6rem;
-    letter-spacing: 0.3rem;
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
     opacity: 0.6;
   }
 
   .iconsContainer {
     background-color: #66b1f1;
   }
+}
+
+.bold-word{
+  font-weight: 700;
+  color: #000;
 }
 
 .et-hero-tabs-container {
@@ -123,11 +116,16 @@ li {
     }
 
     h3 {
-      font-size: 1rem;
+      letter-spacing: 0.5rem;
+      font-size: 1.3rem;
     }
   }
 
   .et-hero-tab {
     font-size: 1rem;
+  }
+  .bold-word{
+    letter-spacing: inherit;
+    font-size: 1.4rem;
   }
 }

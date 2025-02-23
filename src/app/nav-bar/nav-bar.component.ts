@@ -25,26 +25,43 @@ export class NavBarComponent {
   contexts: INavigationContext[] = [
     {
       index: 0,
+      iconName: 'bi bi-cloud-sun', // Bootstrap icon for weather
       name: 'Weather App',
       componentName: 'weatherComponent',
       description:
-        'A simple application to check the current weather and forecast.',
+        'A simple application to check the current weather, forecasts, and temperature trends based on user location.',
     },
     {
       index: 1,
-      name: 'Crypto Invest',
-      componentName: 'cryptoComponent',
-      description: 'Test description of podcast app',
+      iconName: 'bi bi-currency-bitcoin', // Icon for cryptocurrency
+      name: 'Trade tracker',
+      componentName: 'tradeComponent',
+      description:
+        'Track real-time stock prices, market trends, and investment insights for better decision-making.',
     },
     {
       index: 2,
-      name: 'CI/CD solutions',
+      iconName: 'bi bi-tools', // Icon for CI/CD tools
+      name: 'CI/CD Solutions',
       componentName: 'CICDComponent',
+      description:
+        'Automate your software development pipeline with CI/CD solutions, ensuring faster and more reliable deployments.',
     },
     {
       index: 3,
-      name: 'Mock websites',
+      iconName: 'bi bi-laptop', // Icon for websites
+      name: 'Mock Websites',
       componentName: 'mockComponent',
+      description:
+        'Generate and test mock websites for design and development purposes, including UI/UX prototypes.',
+    },
+    {
+      index: 4,
+      iconName: 'bi bi-journal-text', // Icon for blogs
+      name: 'Blog',
+      componentName: 'blogComponent',
+      description:
+        'Create and manage blog posts, share insights, and engage with your audience through a content-rich platform.',
     },
   ];
 
@@ -88,7 +105,7 @@ export class NavBarComponent {
   }
   updateSpanWidth() {
     if (this.navBar) {
-      this.navItemWidth = this.navBar.nativeElement.offsetWidth / 4;
+      this.navItemWidth = this.navBar.nativeElement.offsetWidth / 5;
       // this.spanClass['width']=this.navItemWidth.toString()+'px';
       let postion = this.navItemWidth * this.index;
       console.log('postion', postion);
