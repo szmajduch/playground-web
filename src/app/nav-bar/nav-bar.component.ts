@@ -7,18 +7,17 @@ import { INavigationContext } from './navigation-bar-utils';
 import { NgFor, NgClass } from '@angular/common';
 import { AboutComponent } from '../about/about.component';
 @Component({
-  selector: 'app-nav-bar',
-  standalone: true,
-  imports: [
-    IconsComponent,
-    ContentComponent,
-    VisibleDirective,
-    NgFor,
-    NgClass,
-    AboutComponent,
-  ],
-  templateUrl: './nav-bar.component.html',
-  styleUrl: './nav-bar.component.scss',
+    selector: 'app-nav-bar',
+    imports: [
+        IconsComponent,
+        ContentComponent,
+        VisibleDirective,
+        NgFor,
+        NgClass,
+        AboutComponent,
+    ],
+    templateUrl: './nav-bar.component.html',
+    styleUrl: './nav-bar.component.scss'
 })
 export class NavBarComponent {
   @ViewChild('nat') navBar!: ElementRef;
